@@ -83,13 +83,17 @@ public class CustomerService implements ICustomerService, UserDetailsService {
 
         Customer customer1 = customerRepository.findById(custId).orElseThrow(() -> new RecordNotFoundException("Customer ID Does Not Exist"));
 
+        customer1.setCustName(customer.getCustName());
         customer1.setCustEmailId(customer.getCustEmailId());
         customer1.setCustAddress(customer.getCustAddress());
         customer1.setCustAccountBalance(customer.getCustAccountBalance());
         customer1.setCustContactNumber(customer.getCustContactNumber());
-        //
-        //
-        //
+        customer1.setCustGender(customer.getCustGender());
+        customer1.setCustAccountNumber(customer.getCustAccountNumber());
+        customer1.setCustDOB(customer.getCustDOB());
+        customer1.setCustPanCard(customer.getCustPanCard());
+        customer1.setCustUID(customer.getCustUID());
+        customer1.setCustPassword(customer.getCustPassword());
 
         return customerRepository.save(customer1);
     }
