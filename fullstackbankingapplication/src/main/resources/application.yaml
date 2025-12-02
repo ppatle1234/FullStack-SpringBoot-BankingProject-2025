@@ -14,6 +14,18 @@ spring:
   main:
     allow-circular-references: true
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: prashantpatle9753@gmail.com
+    password: ptha flri efhc thwd
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 jwt:
   secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
   expiration: 86400000    # A Day in MilliSeconds
