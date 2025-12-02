@@ -1,5 +1,7 @@
 package com.fullstack.advice;
 
+import com.fullstack.exception.InsufficientFundException;
+import com.fullstack.exception.RecordNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -12,6 +14,18 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalCustomExceptionHandler {
+
+    @ExceptionHandler
+    public ResponseEntity<?> handleCustomException(RecordNotFoundException exception) {
+
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Object> handleInsufficientFundException(InsufficientFundException exception){
+        return new ResponseEntity<>("{errors}: "+exception.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 
     @ExceptionHandler
     public ResponseEntity<Map<String, String>> handleCustomValidation(MethodArgumentNotValidException exception) {
